@@ -1,13 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ShopContext } from "../context/StoreContext";
 import Title from "./Title";
+import ProductsItem from "./ProductsItem";
 
 const Best_Seller = () => {
   const { products } = useContext(ShopContext);
   const [bestSeller, setBestSeller] = useState([]);
   useEffect(() => {
-    const bestProduct = products.filter((item) => item.bestSeller);
-    setBestSeller(bestProduct.slice(0, 5));
+    const bestProducts = products.filter((item) => item.bestseller);
+    setBestSeller(bestProducts.slice(0, 5));
   }, []);
   return (
     <div className="my-9">
@@ -18,7 +19,17 @@ const Best_Seller = () => {
           industry.Lorem Ipsum has been the.
         </p>
       </div>
-      <div className=" grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6"></div>
+      <div className=" grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6">
+        {bestSeller.map((item, index) => (
+          <ProductsItem
+            key={index}
+            id={item._id}
+            name={item.name}
+            image={item.image}
+            price={item.price}
+          />
+        ))}
+      </div>
     </div>
   );
 };

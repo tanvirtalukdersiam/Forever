@@ -16,7 +16,7 @@ const Navbar = () => {
           alt=""
         />
       </Link>
-      <ul className="hidden md:flex text-base font-outfit gap-5 font-semibold text-gray-700">
+      <ul className="hidden md:flex text-base font-outfit gap-5 font-medium text-gray-600">
         <NavLink className={""} to={"/"}>
           <li className="py-1  uppercase ">HOME</li>
           <hr className="border-none  h-[2px] bg-gray-700 w-2/4 m-auto hidden" />
