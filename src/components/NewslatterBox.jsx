@@ -2,7 +2,7 @@ import React from "react";
 
 const NewslatterBox = () => {
   return (
-    <div className="text-center">
+    <div className="text-center mt-5">
       <p className="font-medium text-2xl text-gray-800">
         Subscribe now & get 20% off
       </p>
@@ -10,7 +10,7 @@ const NewslatterBox = () => {
         Lorem Ipsum is simply dummy text of the printing and typesetting
         industry.
       </p>
-      <form className="w-full sm:w-1/2 flex items-center gap-3 mx-auto my-5 border border-gray-300 pl-3">
+      <form className="w-full sm:w-1/2 flex items-center gap-3 mx-auto my-6 border border-gray-300 pl-3">
         <input
           className="w-full sm:flex-1  outline-none  "
           type="email"
