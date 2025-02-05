@@ -6,7 +6,7 @@ import Title from "../components/Title";
 import ProductsItem from "../components/ProductsItem";
 
 const Collection = () => {
-  const { products } = useContext(ShopContext);
+  const { products, search, showSearch } = useContext(ShopContext);
   const [showFilter, setShowFilter] = useState(true);
   const [filterProducts, setFilterProducts] = useState([]);
   const [category, setCategory] = useState([]);
@@ -31,6 +31,13 @@ const Collection = () => {
 
   const applyFilters = () => {
     let productsCopy = products.slice();
+
+    if (showSearch && search) {
+      productsCopy = productsCopy.filter((product) =>
+        product.name.toLowerCase().includes(search.toLowerCase())
+      );
+    }
+
     if (category.length > 0) {
       productsCopy = productsCopy.filter((product) =>
         category.includes(product.category)
@@ -59,18 +66,18 @@ const Collection = () => {
     }
   };
 
-  // useEffect(() => {
-  //   setFilterProducts(products);
-  // }, []);
+  useEffect(() => {
+    setFilterProducts(products);
+  }, []);
 
   useEffect(() => {
     applyFilters();
-  }, [category, subCategory]);
+  }, [category, subCategory, search, showSearch]);
   useEffect(() => {
     sortProducts();
   }, [sortType]);
   return (
-    <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t">
+    <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t border-gray-300">
       {/* filter option */}
       <div className="min-w-60">
         <p
