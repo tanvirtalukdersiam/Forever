@@ -8,7 +8,7 @@ import RelativeProducts from "../components/RelativeProducts";
 const Product = () => {
   const { productId } = useParams();
   console.log(productId);
-  const { products, currency } = useContext(ShopContext);
+  const { products, currency, addToCart } = useContext(ShopContext);
   const [productData, setProductData] = useState(false);
   const [image, setImage] = useState("");
   const [size, setSize] = useState("");
@@ -18,6 +18,7 @@ const Product = () => {
       if (item._id === productId) {
         setProductData(item);
         setImage(item.image[0]);
+        console.log(item);
         return null;
       }
     });
@@ -79,7 +80,10 @@ const Product = () => {
               ))}
             </div>
           </div>
-          <button className="bg-black px-8 py-3.5 text-white text-sm active:bg-slate-600">
+          <button
+            onClick={() => addToCart(productData._id, size)}
+            className="cursor-pointer bg-black px-8 py-3.5 text-white text-sm active:bg-slate-600"
+          >
             ADD TO CART
           </button>
           <hr className="mt-8 sm:w-4/5 border-gray-300" />
