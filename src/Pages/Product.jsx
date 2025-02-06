@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { ShopContext } from "../context/StoreContext";
 import { useState } from "react";
 import { assets } from "../assets/assets";
+import RelativeProducts from "../components/RelativeProducts";
 
 const Product = () => {
   const { productId } = useParams();
@@ -117,6 +118,11 @@ const Product = () => {
           </p>
         </div>
       </div>
+      {/* related products */}
+      <RelativeProducts
+        category={productData.category}
+        subCategory={productData.subCategory}
+      />
     </div>
   ) : (
     <div className="opacity-0"></div>
