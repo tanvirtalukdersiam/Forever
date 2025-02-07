@@ -51,6 +51,28 @@ const ShopContextProvider = (props) => {
     cartData[itemId][size] = quantity;
     setCartItems(cartData);
   };
+
+  const getCartTotal = () => {
+    let totalAmount = 0;
+
+    // Ensure cartItems is an object before iteration
+    if (!cartItems || typeof cartItems !== "object") return 0;
+
+    Object.keys(cartItems).forEach((itemId) => {
+      let itemInfo = products.find((product) => product._id === itemId);
+
+      if (itemInfo) {
+        Object.values(cartItems[itemId]).forEach((quantity) => {
+          if (quantity > 0) {
+            totalAmount += itemInfo.price * quantity;
+          }
+        });
+      }
+    });
+
+    return totalAmount;
+  };
+
   const value = {
     products,
     currency,
@@ -63,6 +85,7 @@ const ShopContextProvider = (props) => {
     addToCart,
     getCartCount,
     updateQuantity,
+    getCartTotal,
   };
 
   return (
