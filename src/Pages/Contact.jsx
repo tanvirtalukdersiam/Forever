@@ -4,7 +4,7 @@ import { assets } from "../assets/assets";
 import NewslatterBox from "../components/NewslatterBox";
 const Contact = () => {
   return (
-    <div>
+    <div className="border-t border-gray-300">
       <div className="text-center text-3xl pt-10 text-gray-500">
         <Title text1={"CONTACT"} text2={"US"} />
       </div>
