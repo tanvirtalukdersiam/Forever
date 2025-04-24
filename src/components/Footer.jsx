@@ -51,7 +51,7 @@ const Footer = () => {
       <div>
         <hr className="border-gray-300" />
         <p className="text-center text-sm font-normal text-pcolor py-4 ">
-          Copyright © 2025 Tanvir Siam - All Right Reserved.
+          Copyright © 2025 Mujahid - All Right Reserved.
         </p>
       </div>
     </div>
